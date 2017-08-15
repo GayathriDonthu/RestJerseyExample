@@ -27,7 +27,7 @@ public class ActivityResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_XML})
 	public Activity createActivity(Activity activity){
-		
+		System.out.println("Welcome to Exercise Service");
 		System.out.println(activity.getDescription());
 		System.out.println(activity.getDuration());
 		
