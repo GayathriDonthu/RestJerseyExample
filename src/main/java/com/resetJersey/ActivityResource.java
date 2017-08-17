@@ -10,6 +10,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.resetJersey.model.User;
 import com.restJersey.model.Activity;
@@ -25,7 +27,7 @@ public class ActivityResource {
 	@POST
 	@Path("activity")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Activity createActivity(Activity activity){
 		System.out.println("Welcome to Exercise Service");
 		System.out.println(activity.getDescription());
@@ -60,6 +62,9 @@ public class ActivityResource {
 	@GET
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public List<Activity> findAllActivities(){
+		
+		System.out.println("Getting all activities");
+		
 		return activityRepository.findAllActivities();
 		
 	}
@@ -67,9 +72,19 @@ public class ActivityResource {
 	@GET
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	@Path("{activityId}") //http://localhost:8080/exercise-services/webapi/activities/22
-	public Activity getActivity(@PathParam ("activityId") String activityId ){
+	public Response getActivity(@PathParam ("activityId") String activityId ){
 		
-		return activityRepository.findActivity(activityId);
+		if(activityId ==  null || activityId.length() < 2){
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		Activity activity = activityRepository.findActivity(activityId);
+		
+		if(activity == null){
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		
+		return Response.ok().entity(activity).build();
 		
 	}
 	
