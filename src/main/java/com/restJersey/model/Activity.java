@@ -3,7 +3,7 @@ package com.restJersey.model;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.resetJersey.model.User;
+import com.restJersey.model.User;
 
 @XmlRootElement
 public class Activity {
@@ -12,6 +12,7 @@ public class Activity {
 	private int duration;
 	private String id;
 	private User user;
+	
 
 	public User getUser() {
 		return user;
@@ -45,5 +46,13 @@ public class Activity {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
+
+	@Override
+	public String toString() {
+		return "Activity [description=" + description + ", duration=" + duration + ", id=" + id + ", user=" + user
+				+ "]";
+	}
+	
+	
 
 }

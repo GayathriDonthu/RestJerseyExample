@@ -1,4 +1,4 @@
-package com.resetJersey.model;
+package com.restJersey.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

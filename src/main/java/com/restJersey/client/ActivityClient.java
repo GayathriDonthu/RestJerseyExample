@@ -75,4 +75,17 @@ public class ActivityClient {
 		return response.readEntity(Activity.class);
 	}
 
+	public void delete(String activityId) {
+		
+		Response response = target.path("activities/" + activityId)
+				.request(MediaType.APPLICATION_JSON)
+				.delete();
+	
+		if(response.getStatus() != 200){
+			throw new RuntimeException(response.getStatus() + ": there is an error on server");
+			
+		}
+		
+	}
+
 }
