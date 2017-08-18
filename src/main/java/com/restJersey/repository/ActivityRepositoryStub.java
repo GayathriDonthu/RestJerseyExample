@@ -42,7 +42,7 @@ public class ActivityRepositoryStub implements ActivityRepository {
 		Activity activity1 = new Activity();
 		activity1.setDescription("swim");
 		activity1.setDuration(30);
-		activity1.setId(22);
+		activity1.setId("22");
 		
 		User user = new User();
 		user.setId(1);
@@ -57,6 +57,14 @@ public class ActivityRepositoryStub implements ActivityRepository {
 	public void create(Activity activity) {
 		
 		// insert method to save in database
+	}
+
+	@Override
+	public void update(Activity activity) {
+		
+		// update the id in database
+		System.out.println("update database with the id");
+		
 	}
 	
 }

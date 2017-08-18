@@ -12,6 +12,21 @@ public class ActivityClientTest {
 
 	private ActivityClient client = new ActivityClient();
 	
+	
+	@Test
+	public void testPut(){
+		
+		Activity activity = new Activity();
+		
+		activity.setId("3456");
+		activity.setDescription("yoga");
+		activity.setDuration(70);
+		activity = client.update(activity);
+		
+		assertNotNull(activity);
+		
+	}
+	
 	@Test
 	public void testCreate() {
 		

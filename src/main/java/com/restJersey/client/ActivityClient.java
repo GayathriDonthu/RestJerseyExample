@@ -63,4 +63,16 @@ public class ActivityClient {
 		return response.readEntity(Activity.class);
 	}
 
+	public Activity update(Activity activity) {
+		
+		Response response = target.path("activities/activity" + activity.getId())
+				.request(MediaType.APPLICATION_JSON)
+				.put(Entity.entity(activity, MediaType.APPLICATION_JSON));
+		
+		if(response.getStatus() != 200){
+			throw new RuntimeException(response.getStatus() + ": there is an error on server");
+		}
+		return response.readEntity(Activity.class);
+	}
+
 }

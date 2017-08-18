@@ -10,7 +10,7 @@ public class Activity {
 
 	private String description;
 	private int duration;
-	private int id;
+	private String id;
 	private User user;
 
 	public User getUser() {
@@ -21,11 +21,11 @@ public class Activity {
 		this.user = user;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
