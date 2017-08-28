@@ -1,4 +1,4 @@
-package com.resetJersey;
+package com.restJersey;
 
 import java.util.List;
 
